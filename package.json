@@ -1,6 +1,6 @@
 {
-  "name": "react-base-table",
-  "version": "1.13.4",
+  "name": "@whats-tools/react-base-table",
+  "version": "2.0.0-alpha.1",
   "description": "a react table component to display large data set with high performance and flexibility",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,10 +12,13 @@
     "styles.css"
   ],
   "author": "Neo Nie <nihgwu@live.com>",
+  "maintainers": [
+    "Neilor Caldeira <neilorcaldeira@gmail.com>"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Autodesk/react-base-table.git"
+    "url": "https://github.com/whats-tools/react-base-table.git"
   },
   "scripts": {
     "start": "cd website && npm start",
@@ -46,15 +49,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "classnames": "^2.2.5",
+    "classnames": "^2.3.2",
     "memoize-one": "^5.0.0",
-    "prop-types": "^15.7.0",
-    "react-virtualized-auto-sizer": "^1.0.2",
-    "react-window": "^1.8.2"
+    "prop-types": "^15.8.1",
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-window": "^1.8.9"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^17.0.0",
-    "react-dom": "^16.0.0 || ^17.0.0"
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -64,7 +67,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@types/react": "^16.9.46",
+    "@types/react": "^18.2.20",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.4.2",
@@ -82,11 +85,11 @@
     "jest": "^23.5.0",
     "lerna": "^3.2.1",
     "lint-staged": "^7.2.2",
-    "node-sass": "^4.9.3",
+    "node-sass": "^9.0.0",
     "prettier": "^1.14.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "rimraf": "^2.6.2"
   },
   "jest": {
