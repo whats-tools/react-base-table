@@ -630,7 +630,7 @@ class BaseTable extends React.PureComponent {
     if (!fixed || !resizingKey) return null;
 
     const columns = this.columnManager.getMainColumns();
-    const idx = columns.findIndex(column => column.key === resizingKey);
+    const idx = columns.findIndex((column) => column.key === resizingKey);
     const column = columns[idx];
     const { width: columnWidth, frozen } = column;
     const leftWidth = this.columnManager.recomputeColumnsWidth(columns.slice(0, idx));

@@ -19,7 +19,7 @@ const AutoResizer = ({ className, width, height, children, onResize }) => {
 
   return (
     <AutoSizer className={className} disableWidth={disableWidth} disableHeight={disableHeight} onResize={onResize}>
-      {size =>
+      {(size) =>
         children({
           width: disableWidth ? width : size.width,
           height: disableHeight ? height : size.height,

@@ -13,11 +13,11 @@ export default class ColumnManager {
   }
 
   reset(columns, fixed) {
-    this._columns = columns.map(column => {
+    this._columns = columns.map((column) => {
       let width = column.width;
       if (column.resizable) {
         // don't reset column's `width` if `width` prop doesn't change
-        const idx = this._origColumns.findIndex(x => x.key === column.key);
+        const idx = this._origColumns.findIndex((x) => x.key === column.key);
         if (idx >= 0 && this._origColumns[idx].width === column.width) {
           width = this._columns[idx].width;
         }
@@ -44,13 +44,13 @@ export default class ColumnManager {
 
   getVisibleColumns() {
     return this._cache('visibleColumns', () => {
-      return this._columns.filter(column => !column.hidden);
+      return this._columns.filter((column) => !column.hidden);
     });
   }
 
   hasFrozenColumns() {
     return this._cache('hasFrozenColumns', () => {
-      return this._fixed && this.getVisibleColumns().some(column => !!column.frozen);
+      return this._fixed && this.getVisibleColumns().some((column) => !!column.frozen);
     });
   }
 
@@ -58,14 +58,14 @@ export default class ColumnManager {
     return this._cache('hasLeftFrozenColumns', () => {
       return (
         this._fixed &&
-        this.getVisibleColumns().some(column => column.frozen === FrozenDirection.LEFT || column.frozen === true)
+        this.getVisibleColumns().some((column) => column.frozen === FrozenDirection.LEFT || column.frozen === true)
       );
     });
   }
 
   hasRightFrozenColumns() {
     return this._cache('hasRightFrozenColumns', () => {
-      return this._fixed && this.getVisibleColumns().some(column => column.frozen === FrozenDirection.RIGHT);
+      return this._fixed && this.getVisibleColumns().some((column) => column.frozen === FrozenDirection.RIGHT);
     });
   }
 
@@ -75,14 +75,14 @@ export default class ColumnManager {
       if (!this.hasFrozenColumns()) return columns;
 
       const mainColumns = [];
-      this.getLeftFrozenColumns().forEach(column => {
+      this.getLeftFrozenColumns().forEach((column) => {
         //columns placeholder for the fixed table above them
         mainColumns.push({ ...column, [ColumnManager.PlaceholderKey]: true });
       });
-      this.getVisibleColumns().forEach(column => {
+      this.getVisibleColumns().forEach((column) => {
         if (!column.frozen) mainColumns.push(column);
       });
-      this.getRightFrozenColumns().forEach(column => {
+      this.getRightFrozenColumns().forEach((column) => {
         mainColumns.push({ ...column, [ColumnManager.PlaceholderKey]: true });
       });
 
@@ -94,7 +94,7 @@ export default class ColumnManager {
     return this._cache('leftFrozenColumns', () => {
       if (!this._fixed) return [];
       return this.getVisibleColumns().filter(
-        column => column.frozen === FrozenDirection.LEFT || column.frozen === true
+        (column) => column.frozen === FrozenDirection.LEFT || column.frozen === true
       );
     });
   }
@@ -102,12 +102,12 @@ export default class ColumnManager {
   getRightFrozenColumns() {
     return this._cache('rightFrozenColumns', () => {
       if (!this._fixed) return [];
-      return this.getVisibleColumns().filter(column => column.frozen === FrozenDirection.RIGHT);
+      return this.getVisibleColumns().filter((column) => column.frozen === FrozenDirection.RIGHT);
     });
   }
 
   getColumn(key) {
-    const idx = this._columns.findIndex(column => column.key === key);
+    const idx = this._columns.findIndex((column) => column.key === key);
     return this._columns[idx];
   }
 

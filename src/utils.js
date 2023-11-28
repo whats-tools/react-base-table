@@ -18,7 +18,7 @@ export function renderElement(renderer, props) {
 
 export function normalizeColumns(elements) {
   const columns = [];
-  React.Children.forEach(elements, element => {
+  React.Children.forEach(elements, (element) => {
     if (React.isValidElement(element) && element.key) {
       const column = { ...element.props, key: element.key };
       columns.push(column);
@@ -103,17 +103,17 @@ export function flattenOnKeys(tree, keys, depthMap = {}, dataKey = 'id') {
 
   const array = [];
   const keysSet = new Set();
-  keys.forEach(x => keysSet.add(x));
+  keys.forEach((x) => keysSet.add(x));
 
   let stack = [].concat(tree);
-  stack.forEach(x => (depthMap[x[dataKey]] = 0));
+  stack.forEach((x) => (depthMap[x[dataKey]] = 0));
   while (stack.length > 0) {
     const item = stack.shift();
 
     array.push(item);
     if (keysSet.has(item[dataKey]) && Array.isArray(item.children) && item.children.length > 0) {
       stack = [].concat(item.children, stack);
-      item.children.forEach(x => (depthMap[x[dataKey]] = depthMap[item[dataKey]] + 1));
+      item.children.forEach((x) => (depthMap[x[dataKey]] = depthMap[item[dataKey]] + 1));
     }
   }
 
@@ -184,7 +184,7 @@ export function getValue(object, path, defaultValue) {
 // copied from https://www.30secondsofcode.org/js/s/debounce
 export const debounce = (fn, ms = 0) => {
   let timeoutId;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
@@ -193,7 +193,7 @@ export const debounce = (fn, ms = 0) => {
 // copied from https://www.30secondsofcode.org/js/s/throttle
 export const throttle = (fn, wait) => {
   let inThrottle, lastFn, lastTime;
-  return function() {
+  return function () {
     const context = this,
       args = arguments;
     if (!inThrottle) {
@@ -202,12 +202,15 @@ export const throttle = (fn, wait) => {
       inThrottle = true;
     } else {
       clearTimeout(lastFn);
-      lastFn = setTimeout(function() {
-        if (Date.now() - lastTime >= wait) {
-          fn.apply(context, args);
-          lastTime = Date.now();
-        }
-      }, Math.max(wait - (Date.now() - lastTime), 0));
+      lastFn = setTimeout(
+        function () {
+          if (Date.now() - lastTime >= wait) {
+            fn.apply(context, args);
+            lastTime = Date.now();
+          }
+        },
+        Math.max(wait - (Date.now() - lastTime), 0)
+      );
     }
   };
 };

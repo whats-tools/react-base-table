@@ -33,9 +33,9 @@ const data = [
   },
 ];
 
-const Table = props => <BaseTable width={100} height={100} data={data} columns={columns} {...props} />;
+const Table = (props) => <BaseTable width={100} height={100} data={data} columns={columns} {...props} />;
 
-describe('Table', function() {
+describe('Table', function () {
   test('renders correctly', () => {
     const tree = renderer.create(<Table />).toJSON();
     expect(tree).toMatchSnapshot();

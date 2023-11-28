@@ -20,7 +20,7 @@ class GridTable extends React.PureComponent {
     this._itemKey = this._itemKey.bind(this);
     this._getBodyWidth = this._getBodyWidth.bind(this);
     this._handleItemsRendered = this._handleItemsRendered.bind(this);
-    this._resetColumnWidthCache = memoize(bodyWidth => {
+    this._resetColumnWidthCache = memoize((bodyWidth) => {
       if (!this.props.estimatedRowHeight) return;
       this.bodyRef && this.bodyRef.resetAfterColumnIndex(0, false);
     });
